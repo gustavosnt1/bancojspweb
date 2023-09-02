@@ -20,6 +20,7 @@ class ContaController {
         const elementoData = document.querySelector('#data');
         const elementoTipoConta = document.querySelector('#contas')
 
+
         if (elementoTipoConta.value == 'conta') {
             const conta = new Conta(elementoNumero.value,
                 Number(elementoSaldo.value), elementoData.value);
