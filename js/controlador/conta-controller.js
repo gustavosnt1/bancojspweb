@@ -17,12 +17,31 @@ class ContaController {
         evento.preventDefault();
         const elementoNumero = document.querySelector('#numero');
         const elementoSaldo = document.querySelector('#saldo');
+        const elementoData = document.querySelector('#data');
+        const elementoTipoConta = document.querySelector('#contas')
 
-        const conta = new Conta(elementoNumero.value,
-            Number(elementoSaldo.value));
-        this.repositorioContas.adicionar(conta);
-        this.inserirContaNoHTML(conta);
+        if (elementoTipoConta.value == 'conta') {
+            const conta = new Conta(elementoNumero.value,
+                Number(elementoSaldo.value), elementoData.value);
+            this.repositorioContas.adicionar(conta);
+            this.inserirContaNoHTML(conta);
+        }
+        
+        if (elementoTipoConta.value == 'contaBonificada') {
+            const conta = new ContaBonificada(elementoNumero.value,
+                Number(elementoSaldo.value), elementoData.value);
+            this.repositorioContas.adicionar(conta);
+            this.inserirContaNoHTML(conta);
+        } 
+        if (elementoTipoConta.value == 'poupanca') {
+            const conta = new Poupanca(elementoNumero.value,
+                Number(elementoSaldo.value), elementoData.value);
+            this.repositorioContas.adicionar(conta);
+            this.inserirContaNoHTML(conta);
+        }
+
     }
+
 
     inserirContaNoHTML(conta) {
         const elementoP = document.createElement('p');
